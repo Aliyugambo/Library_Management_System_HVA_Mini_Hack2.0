@@ -20,10 +20,11 @@
       - Return an Issued Book: Manage the return of books to the library.   
 ---
 ## Project Setup
---- ### Backend Development (Node.js with Express)
-- pull this repo
-- open it on Vscode
+   - pull this repo
+   - open it on Vscode
 - 
+### Backend Development (Node.js with Express)
+      
 
 ---
 ## Base URL
