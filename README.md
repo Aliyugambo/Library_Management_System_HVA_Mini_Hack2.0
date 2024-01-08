@@ -26,7 +26,7 @@
 
 ---
 ## Base URL
-[-News Explorer Application]()
+[Library Management System API]()
 
 ## Creator
 - Aliyu Gambo Aliyu
