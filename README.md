@@ -25,7 +25,6 @@
    - Initialize a new Node.js project.
    - Install required dependencies (Express, Mongoose for MongoDB, etc.).
    - Database Setup: Connect to MongoDB and set up your database schema for Members and Books.
-- 
 ### Backend Development (Node.js with Express)
 
 1. Member Management (API Endpoints):
