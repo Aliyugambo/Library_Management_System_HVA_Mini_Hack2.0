@@ -49,7 +49,7 @@
 ---
 
 ## Deployment:
-      > Deploy your application, considering the hosting platform and requirements.
+   Deploy your application, considering the hosting platform and requirements.
 ## Base URL
 [Library Management System API]()
 
