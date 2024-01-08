@@ -22,9 +22,30 @@
 ## Project Setup
    - pull this repo
    - open it on Vscode
+   - Initialize a new Node.js project.
+   - Install required dependencies (Express, Mongoose for MongoDB, etc.).
+   - Database Setup: Connect to MongoDB and set up your database schema for Members and Books.
 - 
 ### Backend Development (Node.js with Express)
+
+1. Member Management (API Endpoints):
+   - List All Members: Create a GET endpoint to fetch all members.
+   - Add New Member: Create a POST endpoint to add a new member.
+   - Delete Member: Create a DELETE endpoint to remove a member.
+   - Edit Member Details: Create a PUT endpoint to update member information.
       
+2. Book Management (API Endpoints):
+
+   - List All Books: Create a GET endpoint to fetch all books.
+   - Add New Book: Create a POST endpoint to add a new book.
+   - Delete Book: Create a DELETE endpoint to remove a book.
+   - Edit Book Details: Create a PUT endpoint to update book information.
+
+
+3. Book Issuing and Returning (API Endpoints):
+
+   - Issue a Book: Create a POST endpoint to manage book issuing.
+   - Return an Issued Book: Create a POST endpoint to manage book returns.
 
 ---
 ## Base URL
