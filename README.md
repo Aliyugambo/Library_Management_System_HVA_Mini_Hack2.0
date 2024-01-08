@@ -1,6 +1,6 @@
 # Library_Management_System_HVA_Mini_Hack2.0_Backend API
 
-   --- Library Management System API tailored for use by a library manager. This API will focus on managing books and library members, as well as handling the issuing and returning of books. 
+   > Library Management System API tailored for use by a library manager. This API will focus on managing books and library members, as well as handling the issuing and returning of books. 
 
 ---
 
