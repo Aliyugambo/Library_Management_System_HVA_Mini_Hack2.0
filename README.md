@@ -47,6 +47,9 @@
    - Return an Issued Book: Create a POST endpoint to manage book returns.
 
 ---
+
+## Deployment:
+      > Deploy your application, considering the hosting platform and requirements.
 ## Base URL
 [Library Management System API]()
 
