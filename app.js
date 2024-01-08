@@ -16,6 +16,10 @@ app.use(express.json());
 
 // ROUTERS
 
+// Checking The Health of My API
+app.get('/api/test', (req,res)=>{
+    res.send("Health check, API is working !!");
+  });
 // Use the memberRoutes for /v1/api
 app.use('/v1/api', memberRoutes);
 
