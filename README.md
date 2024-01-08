@@ -19,7 +19,8 @@
       - Issue a Book: Facilitate the process for the library manager to issue books to members.
       - Return an Issued Book: Manage the return of books to the library.   
 ---
-## Setup
+## Project Setup
+--- ### Backend Development (Node.js with Express)
 - pull this repo
 - open it on Vscode
 - 
