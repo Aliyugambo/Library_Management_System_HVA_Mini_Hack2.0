@@ -12,8 +12,9 @@ const issueSchema = new mongoose.Schema({
     required: true,
   },
   issueDate: {
-    type: Date,
-    default: Date.now,
+    type: Date, 
+    default: Date.now, 
+    required: true
   },
   returnDate: {
     type: Date,

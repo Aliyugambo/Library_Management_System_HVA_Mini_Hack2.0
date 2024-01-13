@@ -5,7 +5,10 @@ const addNewBook = async (req, res) => {
     try {
       const newBook = new Book(req.body);
       const savedBook = await newBook.save();
-      res.status(201).json({savedBook});
+      res.status(201).json({
+        message: 'Book Succesfully Added',
+        savedBook
+      });
     } catch (error) {
       console.error('Error adding new book:', error);
       res.status(500).json({ 
@@ -18,7 +21,9 @@ const addNewBook = async (req, res) => {
 const getAllBooks = async (req, res) => {
   try {
     const books = await Book.find();
-    res.status(200).json(books);
+    res.status(200).json(
+      {books}
+      )
   } catch (error) {
     console.error('Error fetching books:', error);
     res.status(500).json({ error: 'Internal Server Error' });

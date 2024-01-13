@@ -4,15 +4,20 @@ const connectToDb = require("./config/db");
 const memberRoutes = require('./routes/memberRoutes');
 const bookRoutes = require('./routes/bookRoutes');
 const issueRoutes = require('./routes/issueRoutes');
-
+const cors = require('cors');
 
 const app = express();
 
 // Connecting to MongoDB Database
 connectToDb();
 
+// Use CORS middleware
+app.use(cors());
+
 // Middleware to parse JSON requests
 app.use(express.json());
+
+
 
 // ROUTERS
 

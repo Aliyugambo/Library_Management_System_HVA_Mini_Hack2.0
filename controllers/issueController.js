@@ -2,66 +2,103 @@ const Issue = require('../Models/Issue');
 const Member = require('../Models/Member');
 const Book = require('../Models/Book');
 
+// Controller function to issue a book
+const issuedBooks = async (req, res) => {
+  try {
+    // Extract member ID and book ID from the request body
+    const { memberId, bookId } = req.body;
 
-// Controller function to issue or return a book
-const manageBookIssue = async (req, res) => {
-    try {
-      // Extract memberID, bookID, and action from the request body
-      const { memberId, bookId, action } = req.body;
-  
-      // Check if member and book exist
-      const member = await Member.findById(memberId);
-      const book = await Book.findById(bookId);
+    // Check if member and book exist
+    const member = await Member.findById(memberId);
+    const book = await Book.findById(bookId);
 
-      if (!member || !book) {
-        return res.status(404).json({ error: 'Member or book not found' });
-        // console.log({ error: 'Member or book not found' });
-      }
-  
-      // Check if the action is valid (issue or return)
-      if (action !== 'issue' && action !== 'return') {
-        return res.status(400).json({ error: 'Invalid action' });
-      }
-  
-      // Check if the book is available (not issued) for issuing
-      if (action === 'issue') {
-        const isBookAvailable = await Issue.findOne({ book: bookId, returnDate: null });
-  
-        if (isBookAvailable) {
-          return res.status(400).json({ error: 'Book is already issued' });
-        }
-      }
-  
-      // Check if the book is issued (for returning)
-      if (action === 'return') {
-        const issuedBook = await Issue.findOne({ member: memberId, book: bookId, returnDate: null });
-  
-        if (!issuedBook) {
-          return res.status(400).json({ error: 'Book is not issued to the member' });
-        //   console.log({ error: 'Book is not issued to the member' })
-        }
-  
-        // Update the return date to mark the book as returned
-        issuedBook.returnDate = new Date();
-        await issuedBook.save();
-  
-        return res.status(200).json({ message: 'Book returned successfully' });
-      }
-  
-      // For issuing, create a new issue record
-      const newIssue = new Issue({
-        member: memberId,
-        book: bookId,
-      });
-  
-      // Save the issue record to the database
-      const issuedBook = await newIssue.save();
-  
-      res.status(201).json(issuedBook);
-    } catch (error) {
-      console.error('Error managing book issue:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    // console.log(book);
+    // console.log(member);
+
+    if (!member || !book) {
+      return res.status(404).json({ error: 'Member or book not found' });
     }
-    };
-  
-  module.exports = {manageBookIssue};
+
+    // Check if the book is available (not issued already)
+    const isBookAvailable = await Issue.findOne({ book: bookId, returnDate: null });
+
+    if (isBookAvailable) {
+      return res.status(400).json({ error: 'Book is already issued' });
+    }
+
+    // Create a new issue record
+    const newIssue = new Issue({
+      member: memberId,
+      book: bookId,
+    });
+
+    // Save the issue record to the database
+    const issuedBook = await newIssue.save();
+
+    res.status(201).json({issuedBook});
+  } catch (error) {
+    console.error('Error issuing book:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+// Controller Function to return a book
+const returnedBooks = async (req, res) =>{
+
+  const { memberId, bookId } = req.body;
+  try {
+    // Find the issued book based on memberId and bookId
+    const issuedBook = await Issue.findOne({
+      member: memberId,
+      book: bookId,
+      returnDate: { $exists: false }, 
+    });
+
+    // console.log(issuedBook)
+    if (!issuedBook) {
+      return res.status(404).json({ error: 'Book not found or already returned.' });
+    }
+
+    // Update the returnDate to mark the book as returned
+    issuedBook.returnDate = new Date();
+  //  const returnned = await issuedBook.save();
+  //  console.log(returnned)
+    res.json({ message: 'Book returned successfully' });
+  } catch (error) {
+    console.error('Error returning book:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+};
+
+const getIssueBooks = async (req, res) =>{
+  try {
+    const issuedBooks = await Issue.find({ returnDate: { $exists: false } })
+      .populate('book', 'title') 
+      .populate('member', 'firstName');
+
+    res.json({issuedBooks} );
+  } catch (error) {
+    console.error('Error fetching issued books:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+const getreturnBooks = async (req, res) =>{
+  try {
+    const returnedBooks = await Issue.find({ returnDate: { $exists: true } })
+      .populate('book', 'title')
+      .populate('member', 'firstName');
+
+    res.json({ returnedBooks });
+    // console.log(returnedBooks)
+  } catch (error) {
+    console.error('Error fetching returned books:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+module.exports = {
+  issuedBooks,
+  returnedBooks,
+  getIssueBooks,
+  getreturnBooks
+};
