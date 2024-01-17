@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar'
-import '../../Dashboard/Home.css';
+
 import axios from 'axios';
 
+import '../../Dashboard/Home.css';
+import { backendUrl } from '../../Utils/utils';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const BookEdit = () => {
   const [bookId, setBookId] = useState('');
   const [editedBook, setEditedBook] = useState({
@@ -26,7 +28,7 @@ const BookEdit = () => {
 
   const handleEditBook = () => {
     // Send a PUT request to edit details of a book
-    axios.put(`http://localhost:4000/v1/api/books/${bookId}`, editedBook)
+    axios.put(`${backendUrl}/v1/api/books/${bookId}`, editedBook)
       .then(response => {
         setSuccessMessage(response.data.message);
         setErrorMessage('');

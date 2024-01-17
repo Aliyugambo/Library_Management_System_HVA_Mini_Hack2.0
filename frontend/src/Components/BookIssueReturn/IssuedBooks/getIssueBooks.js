@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
-
+import {backendUrl} from '../../Utils/utils'
 const GetBookIssued = () => {
   const [issuedBooks, setIssuedBooks] = useState([]);
 //   const [returnedBooks, setReturnedBooks] = useState([]);
 
   useEffect(() => {
     // Fetch issued books
-    axios.get('http://localhost:4000/v1/api/booksisues')
+    axios.get(`${backendUrl}/v1/api/booksisues`)
       .then(response => console.log(setIssuedBooks(response.data.issuedBooks)))
       .catch(error => console.error('Error fetching issued books:', error));
   }, []);

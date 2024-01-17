@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
-import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar'
+
 import '../../Dashboard/Home.css';
+import { backendUrl } from '../../Utils/utils';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const BookAdd = () => {
   const [newBook, setNewBook] = useState({
     title: '',
@@ -27,7 +29,7 @@ const BookAdd = () => {
 
   const handleAddBook = () => {
     // Send a POST request to add a new book
-    axios.post('http://localhost:4000/v1/api/books', newBook)
+    axios.post(`${backendUrl}/v1/api/books`, newBook)
       .then(response => {
         setSuccessMessage(response.data.message);
         setErrorMessage('');

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import '../../Dashboard/Home.css';
+import { backendUrl } from '../../Utils/utils';
 import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberAdd = () => {
   const [newMember, setNewMember] = useState({
@@ -24,7 +25,7 @@ const MemberAdd = () => {
 
   const handleAddMember = () => {
     // Send a POST request to add a new member
-    axios.post('http://localhost:4000/v1/api/members', newMember)
+    axios.post(`${backendUrl}/v1/api/members`, newMember)
       .then(response => {
         setSuccessMessage(response.data.message);
         setErrorMessage('');

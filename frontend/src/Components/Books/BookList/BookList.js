@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import '../../Dashboard/Home.css';
+import { backendUrl } from '../../Utils/utils';
 import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 
 import './BookList.css';
@@ -13,7 +14,7 @@ const BookList = () => {
 
   useEffect(() => {
     // Fetch books from the backend
-    axios.get('http://localhost:4000/v1/api/books')
+    axios.get(`${backendUrl}/v1/api/books`)
       .then(response => setBooks(response.data.books))
       .catch(error => console.error('Error fetching books:', error));
   }, []);

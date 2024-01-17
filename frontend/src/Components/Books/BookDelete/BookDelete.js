@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar'
-import '../../Dashboard/Home.css';
+
 import axios from 'axios';
 
+import '../../Dashboard/Home.css';
+import { backendUrl } from '../../Utils/utils';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const BookDelete = () => {
   const [bookId, setBookId] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -17,7 +19,7 @@ const BookDelete = () => {
 
   const handleDeleteBook = () => {
     // Send a DELETE request to remove a book
-    axios.delete(`http://localhost:4000/v1/api/books/${bookId}`)
+    axios.delete(`${backendUrl}/v1/api/books/${bookId}`)
       .then(response => {
         setSuccessMessage(response.data.message);
         setErrorMessage('');

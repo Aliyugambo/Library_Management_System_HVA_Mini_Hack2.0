@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
-
+import {backendUrl} from '../../Utils/utils'
 const GetBookReturned = () => {
   const [returnedBooks, setReturnedBooks] = useState([]);
 
   useEffect(() => {
    
     // Fetch returned books
-    axios.get('http://localhost:4000/v1/api/returnBook')
+    axios.get(`${backendUrl}/v1/api/returnBook`)
       .then(response => console.log(setReturnedBooks(response.data.returnedBooks)))
       .catch(error => console.error('Error fetching returned books:', error));
   }, []);

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import '../../Dashboard/Home.css';
+import { backendUrl } from '../../Utils/utils';
 import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberEdit = () => {
   const [memberId, setMemberId] = useState('');
@@ -28,7 +29,7 @@ const MemberEdit = () => {
   };
 
   const handleEditMember = () => {
-    axios.put(`http://localhost:4000/v1/api/members/${memberId}`, editedMember)
+    axios.put(`${backendUrl}/v1/api/members/${memberId}`, editedMember)
       .then(response => {
         setSuccessMessage(response.data.message);
         setErrorMessage('');

@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import '../../Dashboard/Home.css';
+import { backendUrl } from '../../Utils/utils';
 import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberList = () => {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
     // Fetch the list of members from the API
-    axios.get('http://localhost:4000/v1/api/members')
+    axios.get(`${backendUrl}/v1/api/members`)
       .then(response => setMembers(response.data))
       .catch(error => console.error('Error fetching members:', error));
   }, []); // Run once on component mount
