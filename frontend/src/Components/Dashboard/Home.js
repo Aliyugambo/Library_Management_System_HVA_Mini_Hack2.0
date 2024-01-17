@@ -3,7 +3,6 @@ import React from 'react';
 import GetBookIssued from '../BookIssueReturn/IssuedBooks/getIssueBooks';
 import GetBookReturned from '../BookIssueReturn/ReturnBooks/getAllReturnBooks';
 
-import Nav from './Navbar/Navbar';
 import SideNavbar from './SideNavbar/SideNavbar';
 import './Home.css'
 const Home = () => {
