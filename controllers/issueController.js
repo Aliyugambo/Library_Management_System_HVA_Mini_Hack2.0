@@ -60,7 +60,7 @@ const returnedBooks = async (req, res) =>{
 
     // Update the returnDate to mark the book as returned
     issuedBook.returnDate = new Date();
-  //  const returnned = await issuedBook.save();
+     await issuedBook.save();
   //  console.log(returnned)
     res.json({ message: 'Book returned successfully' });
   } catch (error) {
@@ -74,7 +74,8 @@ const getIssueBooks = async (req, res) =>{
   try {
     const issuedBooks = await Issue.find({ returnDate: { $exists: false } })
       .populate('book', 'title') 
-      .populate('member', 'firstName');
+      .populate('member', 'lastName')
+      .populate('member', 'email');
 
     res.json({issuedBooks} );
   } catch (error) {
@@ -87,7 +88,8 @@ const getreturnBooks = async (req, res) =>{
   try {
     const returnedBooks = await Issue.find({ returnDate: { $exists: true } })
       .populate('book', 'title')
-      .populate('member', 'firstName');
+      .populate('member', 'lastName')
+      .populate('member', 'email');
 
     res.json({ returnedBooks });
     // console.log(returnedBooks)

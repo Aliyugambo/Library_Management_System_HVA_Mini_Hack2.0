@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
+import '../../Dashboard/Home.css';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
+
+import './BookList.css';
 const BookList = () => {
   const [books, setBooks] = useState([]);
 
@@ -15,16 +19,42 @@ const BookList = () => {
   }, []);
 
   return (
-    <div>
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id="content">
       <h2>Book List</h2>
-      <ul>
-        {books.map(book => (
-          <li key={book.id}>{book.title} - {book._id}</li>
-        ))}
-      </ul>
-      <Link to="/books/add">Add Member</Link>
-      <Link to="/books/delete">Delete Member</Link>
-      <Link to="/books/edit">Edit Member</Link>
+      <div className="book-list-container">
+
+      {books.length > 0 ? (
+        <table className="book-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+            {books.map(book => (
+              <tr key={book.id}>
+                <td>{book._id}</td>
+                <td>{book.title}</td>
+                <td>{book.author}</td>
+                <td>{book.genre}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No books available</p>
+      )}
+      </div>
+      
+      <Link to="/books/add">Add Books</Link>
+      <Link to="/books/delete">Delete Books</Link>
+      <Link to="/books/edit">Edit Books</Link>
+          </div>
     </div>
   );
 };

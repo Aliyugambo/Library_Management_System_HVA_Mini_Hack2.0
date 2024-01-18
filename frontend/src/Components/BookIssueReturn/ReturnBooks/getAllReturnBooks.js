@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-const BookIssueReturned = () => {
-  const [issuedBooks, setIssuedBooks] = useState([]);
+const GetBookReturned = () => {
   const [returnedBooks, setReturnedBooks] = useState([]);
 
   useEffect(() => {
@@ -18,13 +17,35 @@ const BookIssueReturned = () => {
     <div className='issue-container'>
       
       <h2>Returned Books</h2>
-      <ul>
-        {returnedBooks.map(issue => (
-          <li key={issue._id}>{issue.book.title} - {issue.member.firstName}</li>
-        ))}
-      </ul>
+
+{
+        returnedBooks.length > 0 ? (
+          <table className="book-table">
+          <thead>
+            <tr>
+              <th>Members ID</th>
+              {/* <th>Member Name</th> */}
+              <th>Book Isued</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          {
+            returnedBooks.map(issue =>(
+              <tr key={issue.id}>
+                  <td>{issue._id}</td>
+                  {/* <td>{issue.member.lastName}</td> */}
+                  <td>{issue.book.title}</td>
+                  <td>{issue.member.email}</td>
+                </tr>
+            ))
+          }
+          </table> 
+        ) : (
+          <p>No books Has Been Return</p>
+        )
+      }
     </div>
   );
 };
 
-export default BookIssueReturned;
+export default GetBookReturned;

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
+import '../../Dashboard/Home.css';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberList = () => {
   const [members, setMembers] = useState([]);
 
@@ -15,18 +17,41 @@ const MemberList = () => {
   }, []); // Run once on component mount
 
   return (
-    <div>
+    <div className='dashboard-container'>
+          <SideNavbar />
+      <div id="content">
       <h2>Member List</h2>
-      <ul>
-        {members.map(member => (
-          <li key={member._id}>
-            {member.firstName} {member.lastName} - {member.email} - {member._id}
-          </li>
-        ))}
-      </ul>
-      <Link to="/add">Add Member</Link>
-      <Link to="/delete">Delete Member</Link>
-      <Link to="/edit">Edit Member</Link>
+      <div className="book-list-container">
+      {members.length > 0 ? (
+          <table className="book-table">
+          <thead>
+            <tr>
+              <th>Members ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              members.map(member =>(
+                <tr key={member.id}>
+                  <td>{member._id}</td>
+                  <td>{member.firstName}</td>
+                  <td>{member.lastName}</td>
+                  <td>{member.email}</td>
+                </tr>
+              ))}
+          </tbody>
+          </table>
+      ) : (
+        <p>No books available</p> 
+      )}
+      </div>
+      <Link to="/members/add">Add Member</Link>
+      <Link to="/members/delete">Delete Member</Link>
+      <Link to="/members/edit">Edit Member</Link>
+        </div>
     </div>
   );
 };

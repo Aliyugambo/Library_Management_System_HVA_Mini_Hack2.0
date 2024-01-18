@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar'
+import '../../Dashboard/Home.css';
 import axios from 'axios';
 
 const BookEdit = () => {
@@ -45,7 +46,10 @@ const BookEdit = () => {
   };
 
   return (
-    <div>
+
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id='content'>
       <h2>Edit Book Details</h2>
       <label>Book ID: <input type="text" value={bookId} onChange={handleIdChange} /></label>
       <form>
@@ -76,6 +80,7 @@ const BookEdit = () => {
         </div>
       )}
       <Link to="/books">Back To Home</Link>
+      </div>
     </div>
   );
 };

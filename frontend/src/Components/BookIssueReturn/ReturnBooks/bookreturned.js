@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
 import axios from 'axios';
+import GetBookReturned from './getAllReturnBooks'
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar'
+import '../../Dashboard/Home.css';
 const BookReturn = () => {
   const [memberId, setMemberId] = useState('');
   const [bookId, setBookId] = useState('');
@@ -32,8 +35,9 @@ const BookReturn = () => {
       });
   };
   return (
-    <div className='issueBooks-maincontainer'>
-      <div>      
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id='content'>      
       <h2>Return Book</h2>
       <label>Member ID: <input type="text" value={memberId} onChange={(e) => setMemberId(e.target.value)} /></label>
       <br />
@@ -52,6 +56,7 @@ const BookReturn = () => {
           {errorMessage}
         </div>
       )};
+      <GetBookReturned />
       </div>
     </div>
     

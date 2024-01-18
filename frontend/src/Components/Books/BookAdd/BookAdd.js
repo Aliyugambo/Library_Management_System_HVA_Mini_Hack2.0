@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
-
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar'
+import '../../Dashboard/Home.css';
 const BookAdd = () => {
   const [newBook, setNewBook] = useState({
     title: '',
@@ -60,7 +61,9 @@ const BookAdd = () => {
   };
 
   return (
-    <div>
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id="content">
       <h2>Add New Book</h2>
       <form>
         <label>Title: <input type="text" name="title" value={newBook.title} onChange={handleInputChange} /></label>
@@ -92,6 +95,7 @@ const BookAdd = () => {
         </div>
       )};
       <Link to="/books">Back To Home</Link>
+      </div>
     </div>
   );
 };

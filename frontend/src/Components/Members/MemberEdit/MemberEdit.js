@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
+
+import '../../Dashboard/Home.css';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberEdit = () => {
   const [memberId, setMemberId] = useState('');
   const [editedMember, setEditedMember] = useState({
@@ -45,7 +48,9 @@ const MemberEdit = () => {
   };
 
   return (
-    <div>
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id='content'>
       <h2>Edit Member Details</h2>
       <label>Member ID: <input type="text" value={memberId} onChange={handleIdChange} /></label>
       <br />
@@ -68,7 +73,8 @@ const MemberEdit = () => {
           {errorMessage}
         </div>
       )}
-      <Link to="/">Back To Home</Link>
+      <Link to="/members">Back To Home</Link>
+      </div>
     </div>
   );
 };

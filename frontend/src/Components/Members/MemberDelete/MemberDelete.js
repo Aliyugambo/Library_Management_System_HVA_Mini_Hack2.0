@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
+
+import '../../Dashboard/Home.css';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberDelete = () => {
   const [memberId, setMemberId] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -33,7 +36,9 @@ const MemberDelete = () => {
   };
 
   return (
-    <div>
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id='content'>
       <h2>Delete Member</h2>
       <label>Member ID: <input type="text" value={memberId} onChange={handleInputChange} /></label>
       <button type="button" onClick={handleDeleteMember}>Delete Member</button>
@@ -49,7 +54,8 @@ const MemberDelete = () => {
           {errorMessage}
         </div>
       )}
-      <Link to="/">Back To Home</Link>
+      <Link to="/members">Back To Home</Link>
+      </div>
     </div>
   );
 };

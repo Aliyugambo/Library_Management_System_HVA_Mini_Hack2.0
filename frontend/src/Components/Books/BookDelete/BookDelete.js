@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar'
+import '../../Dashboard/Home.css';
 import axios from 'axios';
 
 const BookDelete = () => {
@@ -36,7 +37,9 @@ const BookDelete = () => {
   };
 
   return (
-    <div>
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id='content'>
       <h2>Delete Book</h2>
       <label>Book ID: <input type="text" value={bookId} onChange={handleInputChange} /></label>
       <button type="button" onClick={handleDeleteBook}>Delete Book</button>
@@ -52,6 +55,7 @@ const BookDelete = () => {
         </div>
       )}
       <Link to="/books">Back To Home</Link>
+      </div>
     </div>
   );
 };

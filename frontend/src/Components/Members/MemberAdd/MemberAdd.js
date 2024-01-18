@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
+
+import '../../Dashboard/Home.css';
+import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberAdd = () => {
   const [newMember, setNewMember] = useState({
     firstName: '',
@@ -51,7 +54,9 @@ const MemberAdd = () => {
       });
   };
   return (
-    <div>
+    <div className='dashboard-container'>
+      <SideNavbar />
+      <div id="content">
       <h2>Add New Member</h2>
       <form>
         <label>First Name: <input type="text" name="firstName" value={newMember.firstName} onChange={handleInputChange} /></label>
@@ -73,7 +78,8 @@ const MemberAdd = () => {
           {errorMessage}
         </div>
       )};
-      <Link to="/">Back To Home</Link>
+      <Link to="/members">Back To Home</Link>
+      </div>
     </div>
   );
 };
