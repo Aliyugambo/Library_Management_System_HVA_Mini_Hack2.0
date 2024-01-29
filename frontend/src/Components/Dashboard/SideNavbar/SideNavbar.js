@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import d2 from '../../../images/d.png';
+import d2 from '../../../images/d2.png';
 
 import './SideNavbar.css';
 import { sideNavbarData } from './sideNavbarData';
