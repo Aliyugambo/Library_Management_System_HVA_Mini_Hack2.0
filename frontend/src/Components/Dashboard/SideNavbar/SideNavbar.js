@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import d from '../../../images/d.png';
+import d2 from '../../../images/d.png';
 
 import './SideNavbar.css';
 import { sideNavbarData } from './sideNavbarData';
@@ -19,7 +19,7 @@ function SideNavbar(props) {
    
     return <div className='sideNavbar'>
         <div className='sideNavbar_logo'>
-            <img src={d} alt='logo' id='logo-u'/>
+            <img src={d2} alt='logo' id='logo-u'/>
         </div>
         <div className='sideNavbar_menu'>
             {
