@@ -38,7 +38,6 @@ const BookIssue = () => {
   };
   return (
     <div className='dashboard-container'>
-      <SideNavbar />
       <div id='content'>      
       <h2>Issue Book</h2>
       <label>Member ID: <input type="text" value={memberId} onChange={(e) => setMemberId(e.target.value)} /></label>

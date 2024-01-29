@@ -38,7 +38,6 @@ const MemberDelete = () => {
 
   return (
     <div className='dashboard-container'>
-      <SideNavbar />
       <div id='content'>
       <h2>Delete Member</h2>
       <label>Member ID: <input type="text" value={memberId} onChange={handleInputChange} /></label>

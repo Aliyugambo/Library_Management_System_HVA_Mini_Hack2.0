@@ -4,16 +4,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 import TestComponent from './Components/Test';
-import BookAdd from './Components/Books/BookAdd/BookAdd';
-import BookDelete from './Components/Books/BookDelete/BookDelete';
-import BookEdit from './Components/Books/BookEdit/BookEdit';
-import BookList from './Components/Books/BookList/BookList';
-import MemberAdd from './Components/Members/MemberAdd/MemberAdd';
-import MemberDelete from './Components/Members/MemberDelete/MemberDelete';
-import MemberEdit from './Components/Members/MemberEdit/MemberEdit';
-import MemberList from './Components/Members/MemberList/MemberList';
-import BookIssue from './Components/BookIssueReturn/IssuedBooks/issueBook'
-import BookReturn from './Components/BookIssueReturn/ReturnBooks/bookreturned'
 import Home from './Components/Dashboard/Home'
 const App = () => {
   return (
@@ -26,18 +16,18 @@ const App = () => {
         {/* MEMBERS MANAGEMENT ROUTES */}
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/members" element={<MemberList />} />
-          <Route exact path="/members/add" element={<MemberAdd />} />
-          <Route exact path="/members/delete" element={<MemberDelete />} />
-          <Route exact path="/members/edit" element={<MemberEdit />} />
+          <Route exact path="/members" element={<Home page={'members'}/>} />
+          <Route exact path="/members/add" element={<Home page={'memberAdd'} />} />
+          <Route exact path="/members/delete" element={<Home page={'memberdel'} />} />
+          <Route exact path="/members/edit" element={<Home page={'memberedit'} />} />
           {/* BOOKS MANAGEMENT ROUTES */}
-          <Route exact path="/books" element={<BookList />} />
-          <Route exact path="/books/add" element={<BookAdd />} />
-          <Route exact path="/books/delete" element={<BookDelete />} />
-          <Route exact path="/books/edit" element={<BookEdit />} />
+          <Route exact path="/books" element={<Home page={'books'}/>} />
+          <Route exact path="/books/add" element={<Home page={'bookAdd'} />} />
+          <Route exact path="/books/delete" element={<Home page={'bookdel'}/>} />
+          <Route exact path="/books/edit" element={<Home page={'bookedit'}/>} />
           {/* BOOKISUESED AND RETURN ROUTES */}
-          <Route exact path="/issues" element={<BookIssue />} />
-          <Route exact path="/returnBook" element={<BookReturn />} />
+          <Route exact path="/issues" element={<Home page={'issues'}/>} />
+          <Route exact path="/returnBook" element={<Home page={'returnBook'}/>} />
 
         </Routes>
 

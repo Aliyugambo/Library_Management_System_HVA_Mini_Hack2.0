@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 import '../../Dashboard/Home.css';
 import { backendUrl } from '../../Utils/utils';
-import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
 const MemberAdd = () => {
   const [newMember, setNewMember] = useState({
     firstName: '',
@@ -56,7 +55,6 @@ const MemberAdd = () => {
   };
   return (
     <div className='dashboard-container'>
-      <SideNavbar />
       <div id="content">
       <h2>Add New Member</h2>
       <form>

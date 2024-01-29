@@ -40,7 +40,6 @@ const BookDelete = () => {
 
   return (
     <div className='dashboard-container'>
-      <SideNavbar />
       <div id='content'>
       <h2>Delete Book</h2>
       <label>Book ID: <input type="text" value={bookId} onChange={handleInputChange} /></label>

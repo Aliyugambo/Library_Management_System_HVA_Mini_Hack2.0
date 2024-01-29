@@ -7,6 +7,7 @@ import axios from 'axios';
 import '../../Dashboard/Home.css';
 import { backendUrl } from '../../Utils/utils';
 import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
+import '../../Members/MemberList/MemberList.css';
 
 import './BookList.css';
 const BookList = () => {
@@ -21,7 +22,6 @@ const BookList = () => {
 
   return (
     <div className='dashboard-container'>
-      <SideNavbar />
       <div id="content">
       <h2>Book List</h2>
       <div className="book-list-container">
@@ -51,11 +51,12 @@ const BookList = () => {
         <p>No books available</p>
       )}
       </div>
-      
+      </div>
+      <div className='btn-con'>
       <Link to="/books/add">Add Books</Link>
       <Link to="/books/delete">Delete Books</Link>
       <Link to="/books/edit">Edit Books</Link>
-          </div>
+      </div>
     </div>
   );
 };

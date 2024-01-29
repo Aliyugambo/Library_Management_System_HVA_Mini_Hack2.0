@@ -6,7 +6,8 @@ import axios from 'axios';
 
 import '../../Dashboard/Home.css';
 import { backendUrl } from '../../Utils/utils';
-import SideNavbar from '../../Dashboard/SideNavbar/SideNavbar';
+
+import './BookAdd.css';
 const BookAdd = () => {
   const [newBook, setNewBook] = useState({
     title: '',
@@ -63,8 +64,7 @@ const BookAdd = () => {
   };
 
   return (
-    <div className='dashboard-container'>
-      <SideNavbar />
+    <div className='dashboard'>
       <div id="content">
       <h2>Add New Book</h2>
       <form>

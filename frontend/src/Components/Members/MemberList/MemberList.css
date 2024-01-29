@@ -19,4 +19,14 @@
   .book-table th {
     background-color: #f2f2f2;
   }
+  h2{
+    margin: 0 auto;
+  }
+
+  .btn-con a :link, :visited {
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+    text-decoration: none;
+  }
   

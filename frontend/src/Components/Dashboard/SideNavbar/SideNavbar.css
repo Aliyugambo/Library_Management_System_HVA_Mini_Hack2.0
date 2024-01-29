@@ -1,33 +1,99 @@
-
-#sidebar {
+.sideNavbar{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    flex: 1;
-    padding-top: 20px;
-    width: 230px;
-    height: 100vh;
-    max-height: 100%;
-    background-color: #ff0000;
+    background-color: rgb(255, 63, 63);
     color: #fff;
-  }
- 
-  #sidebar a {
-    display: block;
-    padding: 30px;
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+     /* justify-content: center; */
+     flex: 1;
+     padding-top: 20px;
+}
+
+.sideNavbar__logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sideNavbar__logo > img{
+    width: 13rem;
+    height: 50%;
+}
+
+.sideNavbar__logo > h1{
+    color: rgb(255, 63, 63);
+    font-size: 2.5rem;
+    font-weight: 400;
+    font-family: 'forte';
+}
+
+/* .sideNavbar__logo #logo-u{
+    font-size: 3rem;
+} */
+
+.sideNavbar__menu{
+    width: 100%;
+    margin-top:7px;
+}
+
+.sideNavbar a:link, :visited{
+    /* text-decoration: none;
+    color: #ffffff; */
+display: block;
+  padding: 30px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #555;
+  transition: background-color 0.3s;
+}
+
+.sideNavbar__menu .menu-item{
+    list-style: none;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 0.4px solid rgba(255, 255, 255, 0.12);
+    padding: 9px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+
+
+.menu-item:hover{
+    /* background-color:#4dabf7; */
     color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid #555;
-    transition: background-color 0.3s;
-  }
+}
 
-  #sidebar a:hover {
-    background-color: #ed2812;
-  }
+.menu-item-icon{
+    /* border: 1px solid red; */
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 
-  @media screen and (max-width: 768px) {
-    #sidebar {
-      display: none;
-    }
-  }
+.menu-item-name{
+    /* border: 1px solid red; */
+    width: 60%;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.menu-item img{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.sideNavbar-bottom{
+    width: 100%;
+    margin-top: auto;
+}

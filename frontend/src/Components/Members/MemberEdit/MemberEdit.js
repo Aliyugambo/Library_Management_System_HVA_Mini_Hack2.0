@@ -50,7 +50,6 @@ const MemberEdit = () => {
 
   return (
     <div className='dashboard-container'>
-      <SideNavbar />
       <div id='content'>
       <h2>Edit Member Details</h2>
       <label>Member ID: <input type="text" value={memberId} onChange={handleIdChange} /></label>
